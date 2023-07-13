@@ -1,0 +1,19 @@
+// Place all the styles related to the PostImages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.card-img-top {
+  .image {
+    width: 300px;
+    height: auto;
+    object-fit: cover;
+  }
+}
+
+.flex-column {
+  .image {
+    width: 600px;
+    height: auto;
+    object-fit: cover;
+  }
+}

@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-6 mx-2 mx-sm-auto rounded px-0 my-5">
+      <% if @post_image.errors.any? %>
+        <ul>
+          <% @post_image.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+      <h2>投稿フォーム</h2>
+      <div class="form-body p-4">
+        <%= form_with model: @post_image, local:true do |f| %>
+          <%= f.attachment_field :image, class: "w-100" %>
+          <div class="input-group mb-3 mt-4">
+            <div class="input-group-prepend">
+              <span class="input-group-text" aria-hidden="true"><i class="fas fa-map-marked-alt"></i></span>
+            </div>
+            <%= f.text_field :spot_name, class: "form-control", placeholder: "スポット名" %>
+            <%= f.text_field :island_name, class: "form-control", placeholder: "島名" %>
+          </div>
+          <%= f.text_area :caption, class: "form-control", rows: "3", placeholder: "説明" %>
+          <hr>
+          <%= f.submit '投稿する', class: "btn btn-lg btn-block btn-success mt-4" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

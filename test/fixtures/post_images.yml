@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  image_id: MyString
+  spot_name: MyText
+  island_name: MyText
+  caption: MyText
+  move: MyText
+  move_time: MyText
+  user_id: 1
+
+two:
+  image_id: MyString
+  spot_name: MyText
+  island_name: MyText
+  caption: MyText
+  move: MyText
+  move_time: MyText
+  user_id: 1

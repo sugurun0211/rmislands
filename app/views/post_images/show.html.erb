@@ -1,0 +1,48 @@
+<div class="container my-3">
+  <div class="row d-flex justify-content-center" style="width:80rm height:80rm;">
+    <div class="col-md-8 flex-column">
+      <h5>スポット名：<%= @post_image.spot_name %></h5>
+      <hr>
+      <%= attachment_image_tag @post_image, :image, class: "img-fluid mb-2" %>
+      <hr>
+      <p>島名：<%= @post_image.island_name %></p>
+      <p>投稿者：<%= @post_image.user.name %> さん</p>
+      <p>説明：<%= @post_image.caption %></p>
+      <hr>
+      <div class="d-flex justify-content-center">
+        <p>投稿日: <%= @post_image.created_at.strftime('%Y/%m/%d') %> | <%= link_to "戻る", post_images_path %></p>
+      </div>
+      <% if @post_image.user == current_user %>
+        <hr>
+        <div class="text-left">
+          <%= link_to "削除する", post_image_path(@post_image), method: :delete, class: "btn btn-md btn-danger mt-10" %>
+        </div>
+        <hr>
+      <% end %>
+    </div>
+    <div class="col-md-4">
+      <h5>コメント</h5>
+      <hr>
+      <%= form_with model:[@post_image, @post_comment], local: true do |f| %>
+        <%= f.text_area :comment, rows:'5', placeholder: "コメントする", class: "form-control mt-2" %>
+          <div class="text-right">
+            <%= f.submit "コメント", class: "btn btn-md btn-success mt-2" %>
+          </div>
+      <% end %>
+      <hr>
+        <% @post_image.post_comments.each do |post_comment| %>
+          <%= attachment_image_tag post_comment.user, :profile_image, fallback: "no_image.png", size: '40x40', class: "rounded-circle"; %>
+          <%= post_comment.user.name %>
+          <div class="d-flex flex-column my-3">
+             <%= post_comment.comment %>
+             <% if post_comment.user == current_user %>
+             <div class="text-right">
+               <%= link_to "削除する", post_image_post_comment_path(post_comment.post_image, post_comment), method: :delete, class: "btn btn-md btn-danger" %>
+             </div>
+             <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    </div>
+</div>

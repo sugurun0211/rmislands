@@ -1,0 +1,23 @@
+<div class="container my-3">
+  <div class="row flex align-items-center justify-content-center">
+    <div class="col-sm-10 col-md-6 flex-column">
+      <h1 class="text-center my-2">ようこそ！</h1>
+      <p class="text-center">
+        日本各地の離島の魅力について投稿し、紹介し合うサイトです。<br>
+        旅行や町・村おこしにご活用ください！
+      </p>
+      <% if user_signed_in? %>
+        <hr>
+        <%= link_to "投稿一覧", post_images_path, class: "btn btn-lg btn-block btn-info mt-4" %>
+        <%= link_to "投稿する", new_post_image_path, class: "btn btn-lg btn-block btn-success mt-4" %>
+        <hr>
+      <% else %>
+        <hr>
+        <%= link_to "ログイン", new_user_session_path, class: "btn btn-lg btn-block btn-primary mt-4" %>
+        <%= link_to "新規登録はこちら", new_user_registration_path, class: "btn btn-lg btn-block btn-warning mt-4" %>
+        <hr>
+      <% end %>
+    </div>
+    <%= image_tag('island_top.jpg') %>
+  </div>
+</div>
